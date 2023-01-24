@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>bf97bc88-6d28-4055-9827-f11f31f53054</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..\..</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EasyNetQ" Version="7.3.8" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.12" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="6.0.12" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.12" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.12" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.12" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Application\Queries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\building blocks\NSE.WebAPI.Core\NSE.WebAPI.Core.csproj" />
+    <ProjectReference Include="..\..\building blocks\SNE.Core\SNE.Core.csproj" />
+  </ItemGroup>
+
+</Project>
