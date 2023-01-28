@@ -36,6 +36,6 @@ app.UseMiddleware<ExceptionMiddleware>();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Catalogo}/{action=Index}/{id?}");
+    pattern: "{controller=Catalogo}/{action=vitrine}/{id?}");
 
 app.Run();

@@ -10,7 +10,14 @@ namespace SNE.WebApp.MVC.Extensions
     {
         protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
         {
-            return Cpf.Validar(value.ToString()) ? ValidationResult.Success : new ValidationResult("CPF Inválido");
+            //return Cpf.Validar(value.ToString()) ? ValidationResult.Success : new ValidationResult("CPF Inválido");
+
+            if (Cpf.Validar(value.ToString()))
+            {
+                return ValidationResult.Success;
+            }
+
+            return new ValidationResult("CPF Inválido");
         }
     }
 

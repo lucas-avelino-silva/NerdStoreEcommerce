@@ -27,8 +27,10 @@ namespace NSE.Clientes.API.Configuration
 
             services.AddScoped<IClienteRepository, ClienteRepository>();
 
-            // esse cara trabalha no singlton
-            services.AddHostedService<RegistroClienteIntegrationHandler>();
+
+            // esse cara trabalha no singlton. Registrando a classe background. O AddHostedService funciona no singleton
+            //Uma vez q tenho uma instancia de um obj singleton, eu não posso injetar nd dentro dele q nao seja singleton
+            //services.AddHostedService<RegistroClienteIntegrationHandler>();
         }
     }
 }

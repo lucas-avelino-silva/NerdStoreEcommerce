@@ -12,6 +12,7 @@ namespace SNE.WebApp.MVC.Services
         {
             // vai retornar um dado no formato string, mas vou tratar ele em um formto especifico
             // media type(3° parametro) é o tipo que colocamos no headller informando o tipo de dados que estamos passando, ou seja, eu estou convertendo para tipo string, mas ele está formatado em formato json.
+
             var ContentSerealizado = new StringContent(
                 JsonSerializer.Serialize(dado),
                 Encoding.UTF8,

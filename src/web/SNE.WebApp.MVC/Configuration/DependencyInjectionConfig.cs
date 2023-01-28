@@ -21,21 +21,21 @@ namespace SNE.WebApp.MVC.Configuration
 
             //aqui eu falo q vai usar esse handler pra manipular esse request
             services.AddHttpClient<ICatalogoService, CatalogoService>()
-                .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>()
-                //Polly
-                //.AddTransientHttpErrorPolicy(p =>
-                //        //que tipo de politica? "WaitAndRetryAsync" com 3 tentativas com o tempo de espera de 600
-                //        p.WaitAndRetryAsync(3, _ => TimeSpan.FromMilliseconds(600)));
-                .AddPolicyHandler(PollyExtensions.EsperarTentar())
-                .AddTransientHttpErrorPolicy(p =>
-                    p.CircuitBreakerAsync(5, TimeSpan.FromMilliseconds(30)));
+                .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
+            //Polly
+            //.AddTransientHttpErrorPolicy(p =>
+            //        //que tipo de politica? "WaitAndRetryAsync" com 3 tentativas com o tempo de espera de 600
+            //        p.WaitAndRetryAsync(3, _ => TimeSpan.FromMilliseconds(600)));
+            //.AddPolicyHandler(PollyExtensions.EsperarTentar())
+            //.AddTransientHttpErrorPolicy(p =>
+            //    p.CircuitBreakerAsync(5, TimeSpan.FromMilliseconds(30)));
 
-            //services.AddHttpClient("Refit", options =>
-            //{
-            //    options.BaseAddress = new Uri(configuration.GetSection("CatalogoUrl").Value);
-            //})
-            //    .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>()
-            //    .AddTypedClient(Refit.RestService.For<ICatalogoServiceRefit>);
+            services.AddHttpClient("Refit", options =>
+            {
+                options.BaseAddress = new Uri(configuration.GetSection("CatalogoUrl").Value);
+            })
+                .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>()
+                .AddTypedClient(Refit.RestService.For<ICatalogoServiceRefit>);
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 

@@ -36,6 +36,10 @@ namespace SNE.WebApp.MVC.Extensions
             {
                 HandleRCircuitBreakerException(httpContext);
             }
+            catch(Exception ex)
+            {
+                var test = ex;
+            }
         }
 
         public static void HandleRequestExceptionAsinc(HttpContext context, HttpStatusCode statusCode)

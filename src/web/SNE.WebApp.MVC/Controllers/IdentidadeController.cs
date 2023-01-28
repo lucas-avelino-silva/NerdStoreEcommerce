@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
+using NSE.WebAPI.Core.Controllers;
 using SNE.WebApp.MVC.Models;
 using SNE.WebApp.MVC.Services;
 using System.IdentityModel.Tokens.Jwt;
@@ -8,6 +9,7 @@ using System.Security.Claims;
 
 namespace SNE.WebApp.MVC.Controllers
 {
+    [Route("Identidade")]
     public class IdentidadeController : MainController
     {
         private readonly IAutentificacaoService _autentificacaoService;
