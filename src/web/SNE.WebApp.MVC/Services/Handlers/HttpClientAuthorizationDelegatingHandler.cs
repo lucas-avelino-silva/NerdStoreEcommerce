@@ -1,4 +1,5 @@
-﻿using SNE.WebApp.MVC.Extensions;
+﻿using NSE.WebAPI.Core.Usuario;
+using SNE.WebApp.MVC.Extensions;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
@@ -8,9 +9,9 @@ namespace SNE.WebApp.MVC.Services.Handlers
     //precisa rregistrar ele (Transient)
     public class HttpClientAuthorizationDelegatingHandler : DelegatingHandler
     {
-        private readonly IUser _user;
+        private readonly IAspNetUser _user;
 
-        public HttpClientAuthorizationDelegatingHandler(IUser user)
+        public HttpClientAuthorizationDelegatingHandler(IAspNetUser user)
         {
             _user = user;
         }

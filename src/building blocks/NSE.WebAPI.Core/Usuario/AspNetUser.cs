@@ -1,8 +1,14 @@
-﻿using System.Security.Claims;
+﻿using Microsoft.AspNetCore.Http;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace SNE.WebApp.MVC.Extensions
+namespace NSE.WebAPI.Core.Usuario
 {
-    public interface IUser
+    public interface IAspNetUser
     {
         string Name { get; }
 
@@ -23,7 +29,7 @@ namespace SNE.WebApp.MVC.Extensions
 
 
     //esses métodos é para facilitar a acessar os dados do usuario
-    public class AspNetUser : IUser
+    public class AspNetUser : IAspNetUser
     {
         //interface responsavel por obter dados do contexto da requisicao
         private readonly IHttpContextAccessor _accessor;

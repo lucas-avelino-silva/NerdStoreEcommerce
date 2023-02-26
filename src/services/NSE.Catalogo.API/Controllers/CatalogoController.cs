@@ -7,6 +7,7 @@ using NSE.WebAPI.Core.Identidade;
 namespace NSE.Catalogo.API.Controllers
 {
     [Authorize]
+    [ApiController]
     public class CatalogoController : MainController
     {
         private readonly IProdutoRepository _produtoRepository;
@@ -23,7 +24,7 @@ namespace NSE.Catalogo.API.Controllers
             return await _produtoRepository.ObterTodos();
         }
 
-        [ClaimsAuthorize("Catalogo", "Ler")]
+        //[ClaimsAuthorize("Catalogo", "Ler")]
         [HttpGet("catalogo/produtos/{id}")]
         public async Task<Produto> ProdutoDetalhe(Guid id)
         {

@@ -14,6 +14,7 @@ using System.Text;
 namespace NSE.Identidade.API.Controllers
 {
     [Route("api/identidade")]
+    [ApiController]
     public class AuthController : MainController
     {
         private readonly SignInManager<IdentityUser> _signInManager;

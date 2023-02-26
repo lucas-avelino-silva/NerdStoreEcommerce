@@ -14,7 +14,8 @@ namespace NSE.Clientes.API.Configuration
 
             service.AddControllers();
             service.AddEndpointsApiExplorer();
-            service.AddSwaggerGen();
+            service.AddSwaggerConfiguration();
+            service.AddJwtConfiguration(configuration);
 
             service.AddCors(options =>
             {
@@ -34,8 +35,7 @@ namespace NSE.Clientes.API.Configuration
             // Configure the HTTP request pipeline.
             if (env.IsDevelopment())
             {
-                applicationBuilder.UseSwagger();
-                applicationBuilder.UseSwaggerUI();
+                applicationBuilder.UseSwaggerConfiguration(env);
             }
 
             applicationBuilder.UseHttpsRedirection();

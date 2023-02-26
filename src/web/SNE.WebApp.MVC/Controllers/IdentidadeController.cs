@@ -9,7 +9,6 @@ using System.Security.Claims;
 
 namespace SNE.WebApp.MVC.Controllers
 {
-    [Route("Identidade")]
     public class IdentidadeController : MainController
     {
         private readonly IAutentificacaoService _autentificacaoService;
@@ -74,8 +73,8 @@ namespace SNE.WebApp.MVC.Controllers
         }
 
         [HttpGet]
-        [Route("sair")]
-        public async Task<IActionResult> Sair()
+        [Route("Logout")]
+        public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("index", "home");

@@ -5,7 +5,6 @@ using SNE.Core.Communication;
 
 namespace NSE.WebAPI.Core.Controllers
 {
-    [ApiController]
     public abstract class MainController : Controller
     {
         protected ICollection<string> Erros = new List<string>();

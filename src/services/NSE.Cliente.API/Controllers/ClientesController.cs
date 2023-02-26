@@ -5,6 +5,7 @@ using SNE.Core.Mediator;
 
 namespace NSE.Clientes.API.Controllers
 {
+    [ApiController]
     public class ClientesController : MainController
     {
         private readonly IMediatorHandler _mediatorHandler;

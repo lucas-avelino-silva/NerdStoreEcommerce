@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.DataAnnotations;
 using Microsoft.Extensions.DependencyInjection;
+using NSE.WebAPI.Core.Usuario;
 using Polly;
 using Polly.Extensions.Http;
 using Polly.Retry;
@@ -15,6 +16,7 @@ namespace SNE.WebApp.MVC.Configuration
         {
             services.AddSingleton<IValidationAttributeAdapterProvider, CpfValidationAttributeAdapterProvider>();
 
+            // servico pra pegar o json web token
             services.AddTransient<HttpClientAuthorizationDelegatingHandler>();
 
             services.AddHttpClient<IAutentificacaoService, AutentificacaoService>();
@@ -30,6 +32,16 @@ namespace SNE.WebApp.MVC.Configuration
             //.AddTransientHttpErrorPolicy(p =>
             //    p.CircuitBreakerAsync(5, TimeSpan.FromMilliseconds(30)));
 
+            services.AddHttpClient<IComprasBffService, ComprasBffService>()
+                .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
+                //.AddTransientHttpErrorPolicy(p =>
+                //    //que tipo de politica? "WaitAndRetryAsync" com 3 tentativas com o tempo de espera de 600
+                //p.WaitAndRetryAsync(3, _ => TimeSpan.FromMilliseconds(600)));
+                //.AddPolicyHandler(PollyExtensions.EsperarTentar())
+                //.AddTransientHttpErrorPolicy(p =>
+                //p.CircuitBreakerAsync(5, TimeSpan.FromMilliseconds(30)));
+
+
             services.AddHttpClient("Refit", options =>
             {
                 options.BaseAddress = new Uri(configuration.GetSection("CatalogoUrl").Value);
@@ -39,7 +51,7 @@ namespace SNE.WebApp.MVC.Configuration
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-            services.AddScoped<IUser, AspNetUser>();
+            services.AddScoped<IAspNetUser, AspNetUser>();
         }
     }
 
